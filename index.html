@@ -18,9 +18,28 @@ header {
     text-align: center;
     font-size: 1.5em;
 }
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.tabs button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+.tabs button:hover {
+    background-color: #4a90e2;
+}
 .container {
     max-width: 700px;
-    margin: 20px auto;
+    margin: 0 auto 20px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -44,7 +63,7 @@ input[type="text"], input[type="tel"], select, textarea {
     box-sizing: border-box;
 }
 textarea { resize: vertical; }
-button {
+button.submit-btn {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
@@ -56,7 +75,7 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-button:hover { background-color: #4a90e2; }
+button.submit-btn:hover { background-color: #4a90e2; }
 .success-message {
     display: none;
     padding: 10px;
@@ -72,7 +91,14 @@ button:hover { background-color: #4a90e2; }
 
 <header>Virat Colour Bank Service</header>
 
-<div class="container">
+<div class="tabs">
+  <button onclick="openTab('buySell')">Buy / Sell</button>
+  <button onclick="openTab('installation')">Installation</button>
+  <button onclick="openTab('repair')">Repair / AMC</button>
+</div>
+
+<!-- Buy/Sell Form -->
+<div id="buySell" class="container" style="display:none;">
 <h2>Buy / Sell Machine Inquiry</h2>
 <form id="buySellForm">
 <label>Option:</label>
@@ -111,12 +137,13 @@ button:hover { background-color: #4a90e2; }
 <label>Place:</label>
 <input type="text" name="place" required>
 
-<button type="submit">Submit Request</button>
+<button type="submit" class="submit-btn">Submit Request</button>
 <div class="success-message" id="buySellSuccess">Request submitted successfully!</div>
 </form>
 </div>
 
-<div class="container">
+<!-- Installation Form -->
+<div id="installation" class="container" style="display:none;">
 <h2>Installation Inquiry</h2>
 <form id="installationForm">
 <label>Machine Company Name:</label>
@@ -137,12 +164,13 @@ button:hover { background-color: #4a90e2; }
 <label>Location:</label>
 <input type="text" name="location" required>
 
-<button type="submit">Submit Request</button>
+<button type="submit" class="submit-btn">Submit Request</button>
 <div class="success-message" id="installationSuccess">Request submitted successfully!</div>
 </form>
 </div>
 
-<div class="container">
+<!-- Repair/AMC Form -->
+<div id="repair" class="container" style="display:none;">
 <h2>Repair / Maintenance Inquiry</h2>
 <form id="repairForm">
 <label>Machine Company Name:</label>
@@ -169,7 +197,7 @@ button:hover { background-color: #4a90e2; }
 <label>Preferred Service Date / Time:</label>
 <input type="text" name="preferredTime">
 
-<button type="submit">Submit Request</button>
+<button type="submit" class="submit-btn">Submit Request</button>
 <div class="success-message" id="repairSuccess">Request submitted successfully!</div>
 </form>
 </div>
@@ -177,6 +205,14 @@ button:hover { background-color: #4a90e2; }
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
 (function(){emailjs.init('1DbqT1FCAU2LeCGha');})();
+
+function openTab(tabId){
+  let tabs = document.getElementsByClassName('container');
+  for(let i=0;i<tabs.length;i++){
+    tabs[i].style.display = 'none'; // hide all forms
+  }
+  document.getElementById(tabId).style.display = 'block'; // show selected
+}
 
 function sendEmail(formId, successId) {
 const form = document.getElementById(formId);
