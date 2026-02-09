@@ -2,63 +2,204 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Virat Colourbank Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virat Colour Bank Service</title>
 <style>
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f4f7}
-.container{max-width:1100px;margin:auto;padding:20px}
-.hero{background:linear-gradient(135deg,#0f4c81,#1fa2ff);color:#fff;padding:30px;border-radius:12px;text-align:center}
-.hero h1{margin:0;font-size:28px}
-.hero p{margin:6px 0 0}
-.section{margin-top:30px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center}
-.card h3{margin:0 0 8px}
-.btn{display:block;text-decoration:none;margin:10px auto;padding:14px;border-radius:8px;font-weight:bold}
-.call{background:#0f4c81;color:#fff}
-.whatsapp{background:#25D366;color:#fff}
-.footer{text-align:center;color:#555;margin-top:30px;font-size:14px}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0; padding: 0;
+}
+header {
+    background-color: #f5a623;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
+}
+.container {
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+h2 {
+    color: #f5a623;
+    text-align: center;
+}
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+input[type="text"], input[type="tel"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+textarea { resize: vertical; }
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover { background-color: #4a90e2; }
+.success-message {
+    display: none;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+}
 </style>
 </head>
 <body>
 
+<header>Virat Colour Bank Service</header>
+
 <div class="container">
+<h2>Buy / Sell Machine Inquiry</h2>
+<form id="buySellForm">
+<label>Option:</label>
+<select required name="buySellOption">
+<option value="">Select</option>
+<option value="Buy">Buy</option>
+<option value="Sell">Sell</option>
+</select>
 
-<div class="hero">
-<h1>Virat Colourbank Service</h1>
-<p>Asian • Berger • Dulux • Nerolac</p>
-<p>Sale • Purchase • Repair • Installation</p>
+<label>Machine Type:</label>
+<select required name="machineType">
+<option value="">Select</option>
+<option value="New">New</option>
+<option value="Old">Old</option>
+</select>
+
+<label>Gyroshaker:</label>
+<select name="gyroshaker">
+<option value="">Select</option>
+<option value="With">With</option>
+<option value="Without">Without</option>
+</select>
+
+<label>Location:</label>
+<input type="text" name="location" required>
+
+<label>Paint Machine Company:</label>
+<input type="text" name="paintCompany" required>
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required>
+
+<label>Name:</label>
+<input type="text" name="name" required>
+
+<label>Place:</label>
+<input type="text" name="place" required>
+
+<button type="submit">Submit Request</button>
+<div class="success-message" id="buySellSuccess">Request submitted successfully!</div>
+</form>
 </div>
 
-<div class="section">
-<h2>Our Services</h2>
-<div class="cards">
-<div class="card">Colourbank Machine Installation</div>
-<div class="card">Repair & Maintenance</div>
-<div class="card">AMC Support</div>
-<div class="card">Old Machine Buy & Sell</div>
-</div>
+<div class="container">
+<h2>Installation Inquiry</h2>
+<form id="installationForm">
+<label>Machine Company Name:</label>
+<input type="text" name="machineCompany" required>
+
+<label>Paint Support Company Name:</label>
+<input type="text" name="paintSupportCompany" required>
+
+<label>Dealer Name:</label>
+<input type="text" name="dealerName" required>
+
+<label>Dealer Shop Name:</label>
+<input type="text" name="dealerShop" required>
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required>
+
+<label>Location:</label>
+<input type="text" name="location" required>
+
+<button type="submit">Submit Request</button>
+<div class="success-message" id="installationSuccess">Request submitted successfully!</div>
+</form>
 </div>
 
-<div class="section">
-<h2>Brands We Support</h2>
-<div class="cards">
-<div class="card">Asian Paints</div>
-<div class="card">Berger</div>
-<div class="card">Dulux</div>
-<div class="card">Nerolac</div>
-</div>
+<div class="container">
+<h2>Repair / Maintenance Inquiry</h2>
+<form id="repairForm">
+<label>Machine Company Name:</label>
+<input type="text" name="machineCompany" required>
+
+<label>Paint Machine Support Company:</label>
+<input type="text" name="paintSupportCompany">
+
+<label>Dealer Name:</label>
+<input type="text" name="dealerName">
+
+<label>Dealer Shop Name:</label>
+<input type="text" name="dealerShop">
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required>
+
+<label>Location / City:</label>
+<input type="text" name="location" required>
+
+<label>Problem Description:</label>
+<textarea name="problemDesc" required></textarea>
+
+<label>Preferred Service Date / Time:</label>
+<input type="text" name="preferredTime">
+
+<button type="submit">Submit Request</button>
+<div class="success-message" id="repairSuccess">Request submitted successfully!</div>
+</form>
 </div>
 
-<a class="btn call" href="tel:+919310852423">📞 Call Now: +91 93108 52423</a>
-<a class="btn whatsapp" href="https://wa.me/919310852423">💬 WhatsApp Enquiry</a>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){emailjs.init('1DbqT1FCAU2LeCGha');})();
 
-<div class="footer">
-All India Service Available<br>
-Trusted Colourbank Machine Experts
-</div>
+function sendEmail(formId, successId) {
+const form = document.getElementById(formId);
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const obj = {};
+    data.forEach((value,key) => obj[key] = value);
 
-</div>
+    emailjs.send('service_d13msqe','YOUR_TEMPLATE_ID', obj,'1DbqT1FCAU2LeCGha')
+    .then(function(response) {
+        document.getElementById(successId).style.display = 'block';
+        form.reset();
+    }, function(error) {
+        alert('Error sending email. Please try again.');
+    });
+});
+}
+
+sendEmail('buySellForm', 'buySellSuccess');
+sendEmail('installationForm', 'installationSuccess');
+sendEmail('repairForm', 'repairSuccess');
+</script>
 
 </body>
 </html>
