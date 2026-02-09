@@ -9,7 +9,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     color: #333;
-    margin: 0; padding: 0;
+    margin: 0;
+    padding: 0;
 }
 header {
     background-color: #f5a623;
@@ -18,28 +19,30 @@ header {
     text-align: center;
     font-size: 1.5em;
 }
-.tabs {
+.landing-page {
     display: flex;
-    justify-content: center;
-    margin: 20px 0;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
 }
-.tabs button {
-    margin: 0 5px;
-    padding: 10px 20px;
+.landing-page button {
+    margin: 10px;
+    padding: 15px 30px;
     background-color: #f5a623;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.2em;
     transition: background-color 0.3s;
 }
-.tabs button:hover {
+.landing-page button:hover {
     background-color: #4a90e2;
 }
-.container {
+.form-page {
+    display: none; /* Hidden initially */
     max-width: 700px;
-    margin: 0 auto 20px;
+    margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -91,14 +94,15 @@ button.submit-btn:hover { background-color: #4a90e2; }
 
 <header>Virat Colour Bank Service</header>
 
-<div class="tabs">
-  <button onclick="openTab('buySell')">Buy / Sell</button>
-  <button onclick="openTab('installation')">Installation</button>
-  <button onclick="openTab('repair')">Repair / AMC</button>
+<!-- Landing Page -->
+<div id="landing" class="landing-page">
+    <button onclick="openFormPage('buySell')">Buy / Sell Machine</button>
+    <button onclick="openFormPage('installation')">Installation</button>
+    <button onclick="openFormPage('repair')">Repair / AMC</button>
 </div>
 
-<!-- Buy/Sell Form -->
-<div id="buySell" class="container" style="display:none;">
+<!-- Form Pages -->
+<div id="buySell" class="form-page">
 <h2>Buy / Sell Machine Inquiry</h2>
 <form id="buySellForm">
 <label>Option:</label>
@@ -142,8 +146,7 @@ button.submit-btn:hover { background-color: #4a90e2; }
 </form>
 </div>
 
-<!-- Installation Form -->
-<div id="installation" class="container" style="display:none;">
+<div id="installation" class="form-page">
 <h2>Installation Inquiry</h2>
 <form id="installationForm">
 <label>Machine Company Name:</label>
@@ -169,8 +172,7 @@ button.submit-btn:hover { background-color: #4a90e2; }
 </form>
 </div>
 
-<!-- Repair/AMC Form -->
-<div id="repair" class="container" style="display:none;">
+<div id="repair" class="form-page">
 <h2>Repair / Maintenance Inquiry</h2>
 <form id="repairForm">
 <label>Machine Company Name:</label>
@@ -206,14 +208,17 @@ button.submit-btn:hover { background-color: #4a90e2; }
 <script>
 (function(){emailjs.init('1DbqT1FCAU2LeCGha');})();
 
-function openTab(tabId){
-  let tabs = document.getElementsByClassName('container');
-  for(let i=0;i<tabs.length;i++){
-    tabs[i].style.display = 'none'; // hide all forms
-  }
-  document.getElementById(tabId).style.display = 'block'; // show selected
+// Show form page on click and hide landing
+function openFormPage(formId){
+    document.getElementById('landing').style.display = 'none';
+    let forms = document.getElementsByClassName('form-page');
+    for(let i=0;i<forms.length;i++){
+        forms[i].style.display = 'none';
+    }
+    document.getElementById(formId).style.display = 'block';
 }
 
+// EmailJS send function
 function sendEmail(formId, successId) {
 const form = document.getElementById(formId);
 form.addEventListener('submit', function(e) {
@@ -232,6 +237,7 @@ form.addEventListener('submit', function(e) {
 });
 }
 
+// Initialize all forms
 sendEmail('buySellForm', 'buySellSuccess');
 sendEmail('installationForm', 'installationSuccess');
 sendEmail('repairForm', 'repairSuccess');
