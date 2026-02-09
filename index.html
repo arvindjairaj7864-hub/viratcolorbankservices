@@ -1,184 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Virat Colourbank Service</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{margin:0;font-family:Arial;background:#f2f4f7}
-.header{
-background:linear-gradient(135deg,#0b4ea2,#1e88e5);
-color:#fff;text-align:center;padding:45px 15px}
-.header h1{margin:0;font-size:34px}
-.header p{margin:6px 0}
-
-.section{padding:35px 15px;max-width:1100px;margin:auto}
-h2{color:#0b4ea2;margin-bottom:18px}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px}
-
-.card{
-background:#fff;
-padding:20px;
-border-radius:12px;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
-font-size:15px}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px}
-
-.gallery img{
-width:100%;
-border-radius:12px;
-box-shadow:0 4px 8px rgba(0,0,0,.15)}
-
-.contact{
-background:#0b4ea2;
-color:#fff;
-padding:35px;
-border-radius:15px}
-
-.contact p{font-size:16px}
-
-.call{
-background:#ff9800;
-color:#fff;
-padding:12px 22px;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-display:inline-block;
-margin-top:10px}
-
-.form-box{
-background:#fff;
-padding:25px;
-border-radius:15px;
-box-shadow:0 4px 10px rgba(0,0,0,.15)}
-
-input,textarea{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border-radius:8px;
-border:1px solid #ccc;
-font-size:14px}
-
-button{
-background:#25d366;
-color:#fff;
-border:none;
-padding:14px;
-width:100%;
-border-radius:30px;
-font-size:16px;
-font-weight:bold}
-
-.footer{
-text-align:center;
-padding:15px;
-background:#ddd;
-font-size:14px}
-
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#25d366;
-color:#fff;
-padding:16px;
-border-radius:50%;
-font-size:22px;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,.3)}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f2f4f7}
+.container{max-width:1100px;margin:auto;padding:20px}
+.hero{background:linear-gradient(135deg,#0f4c81,#1fa2ff);color:#fff;padding:30px;border-radius:12px;text-align:center}
+.hero h1{margin:0;font-size:28px}
+.hero p{margin:6px 0 0}
+.section{margin-top:30px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center}
+.card h3{margin:0 0 8px}
+.btn{display:block;text-decoration:none;margin:10px auto;padding:14px;border-radius:8px;font-weight:bold}
+.call{background:#0f4c81;color:#fff}
+.whatsapp{background:#25D366;color:#fff}
+.footer{text-align:center;color:#555;margin-top:30px;font-size:14px}
 </style>
 </head>
-
 <body>
 
-<div class="header">
+<div class="container">
+
+<div class="hero">
 <h1>Virat Colourbank Service</h1>
 <p>Asian • Berger • Dulux • Nerolac</p>
-<p>Installation | Repair | AMC | Buy & Sell</p>
+<p>Sale • Purchase • Repair • Installation</p>
 </div>
 
 <div class="section">
 <h2>Our Services</h2>
 <div class="cards">
-<div class="card">✔ Colourbank Machine Installation</div>
-<div class="card">✔ All Brand Repair Support</div>
-<div class="card">✔ AMC & Maintenance</div>
-<div class="card">✔ New & Old Machine Deal</div>
+<div class="card">Colourbank Machine Installation</div>
+<div class="card">Repair & Maintenance</div>
+<div class="card">AMC Support</div>
+<div class="card">Old Machine Buy & Sell</div>
 </div>
 </div>
 
 <div class="section">
-<h2>Our Machines</h2>
-<div class="gallery">
-<img src="machine1.jpg">
-<img src="machine2.jpg">
-<img src="machine3.jpg">
-<img src="machine4.jpg">
-</div>
-</div>
-
-<div class="section">
-<h2>Why Choose Us?</h2>
+<h2>Brands We Support</h2>
 <div class="cards">
-<div class="card">✔ 10+ Years Experience</div>
-<div class="card">✔ Fast On-Site Service</div>
-<div class="card">✔ Genuine Spare Parts</div>
-<div class="card">✔ 24×7 Phone Support</div>
+<div class="card">Asian Paints</div>
+<div class="card">Berger</div>
+<div class="card">Dulux</div>
+<div class="card">Nerolac</div>
 </div>
 </div>
 
-<div class="section">
-<h2>Quick Enquiry</h2>
-<div class="form-box">
-<form onsubmit="sendWhatsApp();return false;">
-<input type="text" id="name" placeholder="Your Name" required>
-<input type="text" id="city" placeholder="City" required>
-<input type="tel" id="mobile" placeholder="Mobile Number" required>
-<textarea id="message" placeholder="Your Requirement"></textarea>
-<button type="submit">Send on WhatsApp</button>
-</form>
-</div>
-</div>
-
-<div class="section contact">
-<h2>Contact Us</h2>
-<p>📞 +91 93108 52423</p>
-<p>💬 WhatsApp Available</p>
-<a class="call" href="tel:+919310852423">Call Now</a>
-</div>
-
-<a class="whatsapp" href="https://wa.me/919310852423">💬</a>
+<a class="btn call" href="tel:+919310852423">📞 Call Now: +91 93108 52423</a>
+<a class="btn whatsapp" href="https://wa.me/919310852423">💬 WhatsApp Enquiry</a>
 
 <div class="footer">
-© 2026 Virat Colourbank Service
+All India Service Available<br>
+Trusted Colourbank Machine Experts
 </div>
 
-<script>
-function sendWhatsApp(){
-var n=document.getElementById("name").value;
-var c=document.getElementById("city").value;
-var m=document.getElementById("mobile").value;
-var msg=document.getElementById("message").value;
-
-var text="Name: "+n+
-"%0ACity: "+c+
-"%0AMobile: "+m+
-"%0ARequirement: "+msg;
-
-window.open("https://wa.me/919310852423?text="+text,"_blank");
-}
-</script>
+</div>
 
 </body>
 </html>
