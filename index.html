@@ -13,19 +13,27 @@ body {
   color: #333;
   scroll-behavior: smooth;
 }
+
+/* Hero Section */
 header {
+  position: relative;
   background: linear-gradient(135deg,#0f4c81,#1fa2ff);
   color: #fff;
   text-align: center;
-  padding: 80px 20px 50px;
+  padding: 100px 20px 60px;
+  overflow: hidden;
 }
 header h1 {
   font-size: 36px;
   margin: 0;
+  z-index: 2;
+  position: relative;
 }
 header p {
   font-size: 18px;
   margin-top: 10px;
+  z-index: 2;
+  position: relative;
 }
 header button {
   margin-top: 20px;
@@ -37,8 +45,22 @@ header button {
   font-size: 18px;
   cursor: pointer;
   transition: background 0.3s;
+  z-index: 2;
+  position: relative;
 }
 header button:hover { background-color: #e08b1f; }
+
+/* Machine Images */
+header .machine-img {
+  position: absolute;
+  bottom: 0;
+  max-height: 180px;
+  opacity: 0.9;
+  transition: transform 0.5s;
+}
+header .machine-img.left { left: 10px; transform: rotate(-5deg);}
+header .machine-img.right { right: 10px; transform: rotate(5deg);}
+header .machine-img:hover { transform: scale(1.05); }
 
 /* Tabs */
 .tabs {
@@ -113,6 +135,7 @@ button.submit-btn:hover { background-color: #1fa2ff; }
   .tabs button { width: 90%; }
   header h1 { font-size: 28px; }
   header p { font-size: 16px; }
+  header .machine-img { max-height: 120px; }
 }
 </style>
 </head>
@@ -122,6 +145,9 @@ button.submit-btn:hover { background-color: #1fa2ff; }
   <h1>Virat Colour Bank Service</h1>
   <p>Buy / Sell / Install / Repair Paint Machines</p>
   <button onclick="document.getElementById('buySell').scrollIntoView({behavior:'smooth'})">Get Started</button>
+  <!-- Machine Images -->
+  <img src="https://i.imgur.com/3Z9j2Pz.png" class="machine-img left" alt="Paint Dispenser">
+  <img src="https://i.imgur.com/2JH6QGQ.png" class="machine-img right" alt="Paint Dispenser">
 </header>
 
 <div class="tabs">
@@ -249,7 +275,6 @@ function openTab(tabId, btn){
   if(btn) btn.classList.add('active');
 }
 
-// Show Buy/Sell tab by default
 document.addEventListener('DOMContentLoaded', function(){
   openTab('buySell', document.querySelector('.tabs button'));
 });
