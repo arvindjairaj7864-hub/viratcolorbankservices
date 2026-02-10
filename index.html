@@ -2,332 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Virat Colourbank Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Virat Colour Bank Service</title>
 <style>
-/* ------- basic reset & body ------- */
 body {
-    margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#f2f4f7;
-    color:#333;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0; padding: 0;
 }
-.container { max-width:1100px; margin:auto; padding:20px; }
-
-/* ------- hero ------- */
-.hero {
-    background: linear-gradient(135deg,#0f4c81,#1fa2ff);
-    color:#fff;
-    padding:30px;
-    border-radius:12px;
-    text-align:center;
+header {
+    background-color: #f5a623;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5em;
 }
-.hero h1 { margin:0; font-size:28px; }
-.hero p { margin:6px 0 0; }
-
-/* ------- options buttons ------- */
-.options { margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:15px; }
-.option-btn {
-    padding:18px;
-    background:#fff;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-    text-align:center;
-    font-weight:bold;
-    cursor:pointer;
-    transition:transform .2s,box-shadow .2s;
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
-.option-btn:hover {
-    transform:translateY(-2px);
-    box-shadow:0 4px 12px rgba(0,0,0,.12);
+.tabs button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
 }
-
-/* ------- forms container ------- */
-.form-container {
-    display:none; /* hidden till an option clicked */
-    margin-top:30px;
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
+.tabs button.active { background-color: #4a90e2; }
+.tabs button:hover { background-color: #4a90e2; }
+.container {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: none;
 }
-.form-container.active { display:block; }
-
-/* ------- form styles ------- */
-form label {
-    display:block;
-    margin-top:15px;
-    font-weight:bold;
+h2 {
+    color: #f5a623;
+    text-align: center;
 }
-form input[type="text"], form input[type="tel"], form select, form textarea {
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border-radius:5px;
-    border:1px solid #ddd;
-    box-sizing:border-box;
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
 }
-form textarea { resize:vertical; }
-form .submit-btn {
-    margin-top:20px;
-    width:100%;
-    padding:12px;
-    background:#0f4c81;
-    color:#fff;
-    border:none;
-    border-radius:5px;
-    font-size:1em;
-    cursor:pointer;
-    transition:background-color .3s;
+input[type="text"], input[type="tel"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
 }
-form .submit-btn:hover { background:#1fa2ff; }
-
+textarea { resize: vertical; }
+button.submit-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #f5a623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button.submit-btn:hover { background-color: #4a90e2; }
 .success-message {
-    display:none;
-    padding:10px;
-    background:#d4edda;
-    color:#155724;
-    border-radius:5px;
-    margin-top:15px;
-    text-align:center;
+    display: none;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
 }
-
-/* ------- footer ------- */
-.footer {
-    text-align:center;
-    color:#555;
-    margin-top:30px;
-    font-size:14px;
+@media(max-width:480px){
+  .tabs { flex-direction: column; }
+  .tabs button { width: 100%; margin: 5px 0; }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<header>Virat Colour Bank Service</header>
 
-    <!-- hero -->
-    <div class="hero">
-        <h1>Virat Colourbank Service</h1>
-        <p>Asian • Berger • Dulux • Nerolac</p>
-        <p>Sale • Purchase • Repair • Installation</p>
-    </div>
-
-    <!-- 4 options -->
-    <div class="options" id="options">
-        <div class="option-btn" data-target="form-installation">
-            1. New Installation
-        </div>
-        <div class="option-btn" data-target="form-repair">
-            2. Repair & Maintenance
-        </div>
-        <div class="option-btn" data-target="form-amc">
-            3. AMC
-        </div>
-        <div class="option-btn" data-target="form-buysell">
-            4. Buy / Sell Old & New Machine
-        </div>
-    </div>
-
-    <!-- ===== forms ===== -->
-
-    <!-- 1) New Installation -->
-    <div class="form-container" id="form-installation">
-        <h2>New Installation Inquiry</h2>
-        <form id="installationForm">
-            <label>Machine Company Name:</label>
-            <input type="text" name="machineCompany" required>
-
-            <label>Paint Support Company Name:</label>
-            <input type="text" name="paintSupportCompany" required>
-
-            <label>Dealer Name:</label>
-            <input type="text" name="dealerName"/>
-
-            <label>Dealer Shop Name:</label>
-            <input type="text" name="dealerShop"/>
-
-            <label>Mobile No.:</label>
-            <input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10-digit mobile number">
-
-            <label>Location / City:</label>
-            <input type="text" name="location" required>
-
-            <button type="submit" class="submit-btn">Submit Request</button>
-            <div class="success-message" id="installationSuccess">Request submitted successfully!</div>
-        </form>
-    </div>
-
-    <!-- 2) Repair & Maintenance -->
-    <div class="form-container" id="form-repair">
-        <h2>Repair / Maintenance Inquiry</h2>
-        <form id="repairForm">
-            <label>Machine Company Name:</label>
-            <input type="text" name="machineCompany" required>
-
-            <label>Paint Machine Support Company:</label>
-            <input type="text" name="paintSupportCompany"/>
-
-            <label>Dealer Name:</label>
-            <input type="text" name="dealerName"/>
-
-            <label>Dealer Shop Name:</label>
-            <input type="text" name="dealerShop"/>
-
-            <label>Mobile No.:</label>
-            <input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10-digit mobile number">
-
-            <label>Location / City:</label>
-            <input type="text" name="location" required>
-
-            <label>Problem Description:</label>
-            <textarea name="problemDesc" required></textarea>
-
-            <label>Preferred Service Date / Time:</label>
-            <input type="text" name="preferredTime"/>
-
-            <button type="submit" class="submit-btn">Submit Request</button>
-            <div class="success-message" id="repairSuccess">Request submitted successfully!</div>
-        </form>
-    </div>
-
-    <!-- 3) AMC -->
-    <div class="form-container" id="form-amc">
-        <h2>AMC Inquiry</h2>
-        <form id="amcForm">
-            <label>Machine Company Name:</label>
-            <input type="text" name="machineCompany" required>
-
-            <label>Paint Machine Support Company:</label>
-            <input type="text" name="paintSupportCompany"/>
-
-            <label>Dealer Name:</label>
-            <input type="text" name="dealerName"/>
-
-            <label>Dealer Shop Name:</label>
-            <input type="text" name="dealerShop"/>
-
-            <label>Mobile No.:</label>
-            <input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10-digit mobile number">
-
-            <label>Location / City:</label>
-            <input type="text" name="location" required>
-
-            <label>Preferred Start Date:</label>
-            <input type="text" name="preferredStart"/>
-
-            <button type="submit" class="submit-btn">Submit Request</button>
-            <div class="success-message" id="amcSuccess">Request submitted successfully!</div>
-        </form>
-    </div>
-
-    <!-- 4) Buy/Sell -->
-    <div class="form-container" id="form-buysell">
-        <h2>Buy / Sell Inquiry</h2>
-        <form id="buySellForm">
-            <label>Option:</label>
-            <select required name="buySellOption">
-                <option value="">Select</option>
-                <option value="Buy">Buy</option>
-                <option value="Sell">Sell</option>
-            </select>
-
-            <label>Machine Type:</label>
-            <select required name="machineType">
-                <option value="">Select</option>
-                <option value="New">New</option>
-                <option value="Old">Old</option>
-            </select>
-
-            <label>Gyroshaker:</label>
-            <select name="gyroshaker">
-                <option value="">Select</option>
-                <option value="With">With</option>
-                <option value="Without">Without</option>
-            </select>
-
-            <label>Location:</label>
-            <input type="text" name="location" required>
-
-            <label>Paint Machine Company:</label>
-            <input type="text" name="paintCompany" required>
-
-            <label>Mobile No.:</label>
-            <input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10-digit mobile number">
-
-            <label>Name:</label>
-            <input type="text" name="name" required>
-
-            <label>Place:</label>
-            <input type="text" name="place" required>
-
-            <button type="submit" class="submit-btn">Submit Request</button>
-            <div class="success-message" id="buySellSuccess">Request submitted successfully!</div>
-        </form>
-    </div>
-
-    <!-- footer -->
-    <div class="footer">
-        All India Service Available<br>
-        Trusted Colourbank Machine Experts
-    </div>
+<div class="tabs">
+  <button onclick="openTab('buySell', this)">Buy / Sell</button>
+  <button onclick="openTab('installation', this)">Installation</button>
+  <button onclick="openTab('repair', this)">Repair / AMC</button>
 </div>
 
-<!-- ===== EmailJS SDK ===== -->
+<!-- Buy/Sell Form -->
+<div id="buySell" class="container">
+<h2>Buy / Sell Machine Inquiry</h2>
+<form id="buySellForm">
+<label>Option:</label>
+<select required name="buySellOption">
+<option value="">Select</option>
+<option value="Buy">Buy</option>
+<option value="Sell">Sell</option>
+</select>
+
+<label>Machine Type:</label>
+<select required name="machineType">
+<option value="">Select</option>
+<option value="New">New</option>
+<option value="Old">Old</option>
+</select>
+
+<label>Gyroshaker:</label>
+<select name="gyroshaker">
+<option value="">Select</option>
+<option value="With">With</option>
+<option value="Without">Without</option>
+</select>
+
+<label>Location:</label>
+<input type="text" name="location" required>
+
+<label>Paint Machine Company:</label>
+<input type="text" name="paintCompany" required>
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10 digit number">
+
+<label>Name:</label>
+<input type="text" name="name" required>
+
+<label>Place:</label>
+<input type="text" name="place" required>
+
+<button type="submit" class="submit-btn">Submit Request</button>
+<div class="success-message" id="buySellSuccess">Request submitted successfully!</div>
+</form>
+</div>
+
+<!-- Installation Form -->
+<div id="installation" class="container">
+<h2>Installation Inquiry</h2>
+<form id="installationForm">
+<label>Machine Company Name:</label>
+<input type="text" name="machineCompany" required>
+
+<label>Paint Support Company Name:</label>
+<input type="text" name="paintSupportCompany" required>
+
+<label>Dealer Name:</label>
+<input type="text" name="dealerName" required>
+
+<label>Dealer Shop Name:</label>
+<input type="text" name="dealerShop" required>
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10 digit number">
+
+<label>Location:</label>
+<input type="text" name="location" required>
+
+<button type="submit" class="submit-btn">Submit Request</button>
+<div class="success-message" id="installationSuccess">Request submitted successfully!</div>
+</form>
+</div>
+
+<!-- Repair/AMC Form -->
+<div id="repair" class="container">
+<h2>Repair / Maintenance Inquiry</h2>
+<form id="repairForm">
+<label>Machine Company Name:</label>
+<input type="text" name="machineCompany" required>
+
+<label>Paint Machine Support Company:</label>
+<input type="text" name="paintSupportCompany">
+
+<label>Dealer Name:</label>
+<input type="text" name="dealerName">
+
+<label>Dealer Shop Name:</label>
+<input type="text" name="dealerShop">
+
+<label>Mobile No.:</label>
+<input type="tel" name="mobile" required pattern="[0-9]{10}" title="Enter 10 digit number">
+
+<label>Location / City:</label>
+<input type="text" name="location" required>
+
+<label>Problem Description:</label>
+<textarea name="problemDesc" required></textarea>
+
+<label>Preferred Service Date / Time:</label>
+<input type="date" name="preferredTime">
+
+<button type="submit" class="submit-btn">Submit Request</button>
+<div class="success-message" id="repairSuccess">Request submitted successfully!</div>
+</form>
+</div>
+
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-/* ====== INIT ====== */
-// Replace 'YOUR_PUBLIC_KEY' with your EmailJS public key
-// As per EmailJS docs, init should be called before sending. :contentReference[oaicite:0]{index=0}
-(function(){
-    emailjs.init('YOUR_PUBLIC_KEY'); // <-- change this
-})();
+(function(){emailjs.init('1DbqT1FCAU2LeCGha');})();
 
-/* ====== helper to open selected form ====== */
-const optionButtons = document.querySelectorAll('.option-btn');
-optionButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const targetId = btn.getAttribute('data-target');
-        // hide all forms
-        document.querySelectorAll('.form-container').forEach(fc => fc.classList.remove('active'));
-        // show selected
-        document.getElementById(targetId).classList.add('active');
-        // scroll a bit to see form
-        document.getElementById(targetId).scrollIntoView({behavior:'smooth', block:'start'});
-    });
-});
+function openTab(tabId, btn){
+  let tabs = document.getElementsByClassName('container');
+  for(let i=0;i<tabs.length;i++){
+    tabs[i].style.display = 'none';
+  }
+  document.getElementById(tabId).style.display = 'block';
 
-/* ====== generic sendEmail function for forms ====== */
-function setupForm(formId, successId, templateId) {
-    const form = document.getElementById(formId);
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const params = {};
-        data.forEach((value, key) => params[key] = value);
-
-        // Replace 'YOUR_SERVICE_ID' and templateId accordingly.
-        emailjs.send('YOUR_SERVICE_ID', templateId, params)
-        .then(function(response) {
-            document.getElementById(successId).style.display = 'block';
-            form.reset();
-            // hide after 5 seconds
-            setTimeout(() => {
-                document.getElementById(successId).style.display = 'none';
-            }, 5000);
-        }, function(error) {
-            alert('Error sending email. Please try again.');
-            console.error('EmailJS error:', error);
-        });
-    });
+  // Active tab highlight
+  let tabButtons = document.querySelectorAll('.tabs button');
+  tabButtons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
 }
 
-/* ====== set up each form ====== */
-// Change template IDs to your actual template IDs from EmailJS.
-setupForm('installationForm', 'installationSuccess', 'YOUR_TEMPLATE_ID_INSTALLATION');
-setupForm('repairForm',       'repairSuccess',       'YOUR_TEMPLATE_ID_REPAIR');
-setupForm('amcForm',          'amcSuccess',          'YOUR_TEMPLATE_ID_AMC');
-setupForm('buySellForm',      'buySellSuccess',      'YOUR_TEMPLATE_ID_BUYSELL');
+// Show Buy/Sell tab by default
+document.addEventListener('DOMContentLoaded', function(){
+  openTab('buySell', document.querySelector('.tabs button'));
+});
+
+function sendEmail(formId, successId) {
+const form = document.getElementById(formId);
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const obj = {};
+    data.forEach((value,key) => obj[key] = value);
+
+    emailjs.send('service_d13msqe','template_9yokk0i', obj,'1DbqT1FCAU2LeCGha')
+    .then(function(response) {
+        document.getElementById(successId).style.display = 'block';
+        form.reset();
+    }, function(error) {
+        alert('Error sending email. Please try again.');
+    });
+});
+}
+
+sendEmail('buySellForm', 'buySellSuccess');
+sendEmail('installationForm', 'installationSuccess');
+sendEmail('repairForm', 'repairSuccess');
 </script>
 
 </body>
