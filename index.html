@@ -6,67 +6,27 @@
 <title>Virat Colour Bank Service</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-<style><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virat Colour Bank Service</title>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
 body{margin:0;font-family:'Roboto',sans-serif;background:#f4f6f9;color:#333}
-
-/* HERO */
-header{
-  position:relative;
-  background:linear-gradient(135deg,#0f4c81,#1fa2ff);
-  color:#fff;
-  text-align:center;
-  padding:90px 20px 60px;
-  overflow:hidden;
-}
+header{position:relative;background:linear-gradient(135deg,#0f4c81,#1fa2ff);color:#fff;text-align:center;padding:90px 20px 60px;overflow:hidden}
 header h1{margin:0;font-size:36px}
 header p{margin-top:10px;font-size:18px}
-header button{
-  margin-top:20px;padding:14px 28px;border:none;border-radius:8px;
-  background:#f5a623;color:#fff;font-size:16px;cursor:pointer
-}
-.machine-img{
-  position:absolute;bottom:0;max-height:170px;opacity:.9
-}
+header button{margin-top:20px;padding:14px 28px;border:none;border-radius:8px;background:#f5a623;color:#fff;font-size:16px;cursor:pointer}
+.machine-img{position:absolute;bottom:0;max-height:170px;opacity:.9}
 .machine-img.left{left:10px}
 .machine-img.right{right:10px}
 
-/* TABS */
 .tabs{display:flex;justify-content:center;margin:20px 0;flex-wrap:wrap}
-.tabs button{
-  margin:5px;padding:12px 24px;border:none;border-radius:5px;
-  background:#0f4c81;color:#fff;cursor:pointer
-}
+.tabs button{margin:5px;padding:12px 24px;border:none;border-radius:5px;background:#0f4c81;color:#fff;cursor:pointer}
 .tabs button.active{background:#1fa2ff}
 
-/* FORM CARDS */
-.container{
-  max-width:750px;margin:20px auto;background:#fff;
-  padding:25px;border-radius:12px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1);display:none
-}
+.container{max-width:750px;margin:20px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);display:none}
 h2{text-align:center;color:#0f4c81}
 label{display:block;margin-top:15px;font-weight:600}
-input,select,textarea{
-  width:100%;padding:10px;margin-top:5px;
-  border-radius:6px;border:1px solid #ccc
-}
+input,select,textarea{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:1px solid #ccc}
 textarea{resize:vertical}
-.submit-btn{
-  margin-top:20px;width:100%;padding:12px;border:none;
-  border-radius:6px;background:#0f4c81;color:#fff;font-size:16px
-}
-.success-message{
-  display:none;margin-top:15px;padding:10px;
-  background:#d4edda;color:#155724;border-radius:5px;text-align:center
-}
+.submit-btn{margin-top:20px;width:100%;padding:12px;border:none;border-radius:6px;background:#0f4c81;color:#fff;font-size:16px}
+.success-message{display:none;margin-top:15px;padding:10px;background:#d4edda;color:#155724;border-radius:5px;text-align:center}
 </style>
 </head>
 <body>
@@ -85,7 +45,7 @@ textarea{resize:vertical}
   <button onclick="openTab('repair',this)">Repair</button>
 </div>
 
-<!-- BUY SELL FORM -->
+<!-- BUY / SELL -->
 <div id="buySell" class="container">
 <h2>Buy / Sell Machine Inquiry</h2>
 <form id="buySellForm">
@@ -113,7 +73,7 @@ textarea{resize:vertical}
 
 <label>Machine Working Condition</label>
 <select name="machineCondition">
-<option>Excellent</option><option>Good</option><option>Needs Repair</option>
+<option>Excellent</option><option>Good</option><option>Needs Minor Service</option>
 </select>
 
 <label>Gyroshaker</label>
@@ -123,18 +83,18 @@ textarea{resize:vertical}
 <select name="computerIncluded"><option>Yes</option><option>No</option></select>
 
 <label>Expected Price / Budget</label><input type="text" name="priceExpectation">
-<label>Problem Details</label><textarea name="problemDetails"></textarea>
 
 <button class="submit-btn">Submit Inquiry</button>
 <div class="success-message" id="buySellSuccess">Submitted Successfully</div>
 </form>
 </div>
 
-<!-- INSTALLATION FORM -->
+<!-- INSTALLATION -->
 <div id="installation" class="container">
 <h2>Installation Inquiry</h2>
 <form id="installationForm">
 <label>Machine Company</label><input type="text" name="machineCompany" required>
+<label>Machine Model</label><input type="text" name="machineModel" required>
 <label>Paint Support Company</label><input type="text" name="paintSupportCompany" required>
 <label>Dealer Name</label><input type="text" name="dealerName" required>
 <label>Dealer Shop</label><input type="text" name="dealerShop" required>
@@ -145,11 +105,12 @@ textarea{resize:vertical}
 </form>
 </div>
 
-<!-- REPAIR FORM -->
+<!-- REPAIR -->
 <div id="repair" class="container">
 <h2>Repair Inquiry</h2>
 <form id="repairForm">
 <label>Machine Company</label><input type="text" name="machineCompany" required>
+<label>Machine Model</label><input type="text" name="machineModel" required>
 <label>Paint Support Company</label><input type="text" name="paintSupportCompany">
 <label>Dealer Name</label><input type="text" name="dealerName">
 <label>Dealer Shop</label><input type="text" name="dealerShop">
@@ -189,122 +150,6 @@ function sendEmail(formId,successId){
   .catch(err=>alert("Error: "+err.text));
  });
 }
-sendEmail("buySellForm","buySellSuccess");
-sendEmail("installationForm","installationSuccess");
-sendEmail("repairForm","repairSuccess");
-</script>
-
-</body>
-</html>
-/* SAME DESIGN CSS — NO CHANGE */
-body { margin:0; padding:0; font-family:'Roboto',sans-serif; background:#f9f9f9; color:#333; scroll-behavior:smooth;}
-header{position:relative;background:linear-gradient(135deg,#0f4c81,#1fa2ff);color:#fff;text-align:center;padding:100px 20px 60px;overflow:hidden;}
-header h1{font-size:36px;margin:0;z-index:2;position:relative;}
-header p{font-size:18px;margin-top:10px;z-index:2;position:relative;}
-header button{margin-top:20px;padding:15px 30px;background:#f5a623;border:none;border-radius:8px;color:#fff;font-size:18px;cursor:pointer;}
-header button:hover{background:#e08b1f;}
-header .machine-img{position:absolute;bottom:0;max-height:180px;opacity:.9;}
-header .machine-img.left{left:10px;}
-header .machine-img.right{right:10px;}
-.tabs{display:flex;justify-content:center;margin:20px 0;flex-wrap:wrap;}
-.tabs button{margin:5px;padding:12px 25px;background:#0f4c81;color:#fff;border:none;border-radius:5px;cursor:pointer;}
-.tabs button.active,.tabs button:hover{background:#1fa2ff;}
-.container{max-width:700px;margin:20px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.1);display:none;}
-h2{text-align:center;color:#0f4c81;}
-label{display:block;margin-top:15px;font-weight:600;}
-input,select,textarea{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:1px solid #ddd;}
-button.submit-btn{margin-top:20px;width:100%;padding:12px;background:#0f4c81;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer;}
-button.submit-btn:hover{background:#1fa2ff;}
-.success-message{display:none;padding:10px;background:#d4edda;color:#155724;border-radius:5px;margin-top:15px;text-align:center;}
-</style>
-</head>
-<body>
-
-<header>
-  <h1>Virat Colour Bank Service</h1>
-  <p>Buy / Sell / Install / Repair Paint Machines</p>
-  <button onclick="document.getElementById('buySell').scrollIntoView({behavior:'smooth'})">Get Started</button>
-  <img src="https://i.imgur.com/3Z9j2Pz.png" class="machine-img left">
-  <img src="https://i.imgur.com/2JH6QGQ.png" class="machine-img right">
-</header>
-
-<div class="tabs">
-  <button onclick="openTab('buySell', this)">Buy / Sell</button>
-  <button onclick="openTab('installation', this)">Installation</button>
-  <button onclick="openTab('repair', this)">Repair / AMC</button>
-</div>
-
-<!-- FORMS SAME AS BEFORE (UNCHANGED) -->
-<!-- BUY/SELL -->
-<div id="buySell" class="container">
-<h2>Buy / Sell Machine Inquiry</h2>
-<form id="buySellForm">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="tel" name="mobile" placeholder="Mobile Number" required>
-<input type="text" name="location" placeholder="Location" required>
-<button type="submit" class="submit-btn">Submit Request</button>
-<div class="success-message" id="buySellSuccess">Request submitted successfully!</div>
-</form>
-</div>
-
-<!-- INSTALLATION -->
-<div id="installation" class="container">
-<h2>Installation Inquiry</h2>
-<form id="installationForm">
-<input type="text" name="machineCompany" placeholder="Machine Company" required>
-<input type="tel" name="mobile" placeholder="Mobile Number" required>
-<button type="submit" class="submit-btn">Submit Request</button>
-<div class="success-message" id="installationSuccess">Request submitted successfully!</div>
-</form>
-</div>
-
-<!-- REPAIR -->
-<div id="repair" class="container">
-<h2>Repair Inquiry</h2>
-<form id="repairForm">
-<input type="text" name="machineCompany" placeholder="Machine Company" required>
-<input type="tel" name="mobile" placeholder="Mobile Number" required>
-<textarea name="problemDesc" placeholder="Problem Description" required></textarea>
-<button type="submit" class="submit-btn">Submit Request</button>
-<div class="success-message" id="repairSuccess">Request submitted successfully!</div>
-</form>
-</div>
-
-<!-- ✅ NEW EMAILJS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-<script>
-emailjs.init("0FsvUgPY5gL4egD1-");
-
-function openTab(tabId, btn){
-  document.querySelectorAll('.container').forEach(c=>c.style.display='none');
-  document.getElementById(tabId).style.display='block';
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  openTab('buySell', document.querySelector('.tabs button'));
-});
-
-function sendEmail(formId, successId){
-  document.getElementById(formId).addEventListener('submit',function(e){
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(this));
-
-    emailjs.send("service_muzvt7j","template_9yokk0i",data)
-    .then(()=>{
-      document.getElementById(successId).style.display="block";
-      this.reset();
-      setTimeout(()=>document.getElementById(successId).style.display="none",4000);
-    })
-    .catch(err=>{
-      console.log(err);
-      alert("Email failed: "+err.text);
-    });
-  });
-}
-
 sendEmail("buySellForm","buySellSuccess");
 sendEmail("installationForm","installationSuccess");
 sendEmail("repairForm","repairSuccess");
