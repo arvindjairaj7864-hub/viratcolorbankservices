@@ -287,7 +287,8 @@ function sendEmail(formId, successId) {
         const obj = {};
         data.forEach((value,key)=>obj[key]=value);
 
-        emailjs.send('service_d13msqe','template_9yokk0i',obj,'1DbqT1FCAU2LeCGha')
+        emailjs.send('service_muzvt7j','template_9yokk0i',obj)
+.then(function(){
         .then(function(){
             const msg = document.getElementById(successId);
             msg.style.display = 'block';
