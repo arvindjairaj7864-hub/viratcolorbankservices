@@ -8,69 +8,273 @@
 
 <style>
 body{margin:0;font-family:'Roboto',sans-serif;background:#f4f6f9;color:#333}
-header{position:relative;background:linear-gradient(135deg,#0f4c81,#1fa2ff);color:#fff;text-align:center;padding:90px 20px 60px;overflow:hidden}
+
+header{
+position:relative;
+background:linear-gradient(135deg,#0f4c81,#1fa2ff);
+color:#fff;
+text-align:center;
+padding:90px 20px 60px;
+overflow:hidden
+}
 header h1{margin:0;font-size:36px}
 header p{margin-top:10px;font-size:18px}
-header button{margin-top:20px;padding:14px 28px;border:none;border-radius:8px;background:#f5a623;color:#fff;font-size:16px;cursor:pointer}
-.machine-img{position:absolute;bottom:0;max-height:170px;opacity:.9}
+header button{
+margin-top:20px;
+padding:14px 28px;
+border:none;
+border-radius:8px;
+background:#f5a623;
+color:#fff;
+font-size:16px;
+cursor:pointer
+}
+
+.machine-img{
+position:absolute;
+bottom:0;
+max-height:170px;
+opacity:.9
+}
 .machine-img.left{left:10px}
 .machine-img.right{right:10px}
 
 /* GALLERY */
-.gallery{padding:60px 20px;background:#fff;text-align:center}
-.gallery h2{color:#0f4c81;margin-bottom:40px}
-.gallery-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:25px}
-.gallery-item{width:280px}
-.gallery-item img{width:100%;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.gallery-item p{margin-top:10px;font-weight:600}
+.gallery{
+padding:60px 20px;
+background:#fff;
+text-align:center
+}
+.gallery h2{
+color:#0f4c81;
+margin-bottom:40px
+}
+.gallery-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px
+}
+.gallery-item{
+width:280px
+}
+.gallery-item img{
+width:100%;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.1)
+}
+.gallery-item p{
+margin-top:10px;
+font-weight:600
+}
 
-.tabs{display:flex;justify-content:center;margin:20px 0;flex-wrap:wrap}
-.tabs button{margin:5px;padding:12px 24px;border:none;border-radius:5px;background:#0f4c81;color:#fff;cursor:pointer}
-.tabs button.active{background:#1fa2ff}
+/* TABS */
+.tabs{
+display:flex;
+justify-content:center;
+margin:20px 0;
+flex-wrap:wrap
+}
+.tabs button{
+margin:5px;
+padding:12px 24px;
+border:none;
+border-radius:5px;
+background:#0f4c81;
+color:#fff;
+cursor:pointer
+}
+.tabs button.active{
+background:#1fa2ff
+}
 
-.container{max-width:750px;margin:20px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.1);display:none}
-h2{text-align:center;color:#0f4c81}
-label{display:block;margin-top:15px;font-weight:600}
-input,select,textarea{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:1px solid #ccc}
-textarea{resize:vertical}
-.submit-btn{margin-top:20px;width:100%;padding:12px;border:none;border-radius:6px;background:#0f4c81;color:#fff;font-size:16px}
-.success-message{display:none;margin-top:15px;padding:10px;background:#d4edda;color:#155724;border-radius:5px;text-align:center}
+/* FORM CONTAINER */
+.container{
+max-width:750px;
+margin:20px auto;
+background:#fff;
+padding:25px;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+display:none
+}
+h2{
+text-align:center;
+color:#0f4c81
+}
+label{
+display:block;
+margin-top:15px;
+font-weight:600
+}
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:6px;
+border:1px solid #ccc
+}
+textarea{
+resize:vertical
+}
+.submit-btn{
+margin-top:20px;
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#0f4c81;
+color:#fff;
+font-size:16px;
+cursor:pointer
+}
+.success-message{
+display:none;
+margin-top:15px;
+padding:10px;
+background:#d4edda;
+color:#155724;
+border-radius:5px;
+text-align:center
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <h1>Virat Colour Bank Service</h1>
-  <p>Buy • Sell • Installation • Repair of Paint Machines</p>
-  <button onclick="document.getElementById('buySell').scrollIntoView({behavior:'smooth'})">Get Started</button>
-  <img src="https://i.imgur.com/3Z9j2Pz.png" class="machine-img left">
-  <img src="https://i.imgur.com/2JH6QGQ.png" class="machine-img right">
+<h1>Virat Colour Bank Service</h1>
+<p>Buy • Sell • Installation • Repair of Paint Machines</p>
+<button onclick="document.getElementById('buySell').scrollIntoView({behavior:'smooth'})">Get Started</button>
+
+<img src="https://i.imgur.com/3Z9j2Pz.png" class="machine-img left">
+<img src="https://i.imgur.com/2JH6QGQ.png" class="machine-img right">
 </header>
 
-<!-- 🔥 NEW GALLERY SECTION -->
+<!-- GALLERY -->
 <section class="gallery">
-  <h2>Our Machines & Services</h2>
-  <div class="gallery-grid">
+<h2>Our Machines & Services</h2>
 
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1581091012184-5c9f0f6b4c8c">
-      <p>Paint Mixing Machine</p>
-    </div>
+<div class="gallery-grid">
 
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232">
-      <p>Machine Installation</p>
-    </div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1581091012184-5c9f0f6b4c8c">
+<p>Paint Mixing Machine</p>
+</div>
 
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1581091870627-3f89b5c0f10d">
-      <p>Repair & Maintenance</p>
-    </div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232">
+<p>Machine Installation</p>
+</div>
 
-    <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1581092919531-7d5f1c1a6c9f">
-      <p>Color Dispenser Machine</p>
-    </div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1581091870627-3f89b5c0f10d">
+<p>Repair & Maintenance</p>
+</div>
 
-  </div>
+<div class="gallery-item">
+<img src="https://images.unsplash.com/photo-1581092919531-7d5f1c1a6c9f">
+<p>Color Dispenser Machine</p>
+</div>
+
+</div>
 </section>
+
+<!-- TABS -->
+<div class="tabs">
+<button onclick="openTab('buySell',this)">Buy / Sell</button>
+<button onclick="openTab('installation',this)">Installation</button>
+<button onclick="openTab('repair',this)">Repair</button>
+</div>
+
+<!-- BUY SELL -->
+<div id="buySell" class="container">
+<h2>Buy / Sell Machine Inquiry</h2>
+<form id="buySellForm">
+
+<label>Name</label><input type="text" name="name" required>
+<label>Mobile</label><input type="tel" name="mobile" required>
+<label>Location</label><input type="text" name="location" required>
+
+<label>Inquiry Type</label>
+<select name="buySellOption" required>
+<option value="">Select</option>
+<option>Buy Machine</option>
+<option>Sell Machine</option>
+</select>
+
+<label>Machine Brand</label><input type="text" name="paintCompany">
+<label>Model Name</label><input type="text" name="modelName">
+<label>Expected Price / Budget</label><input type="text" name="priceExpectation">
+
+<button class="submit-btn">Submit Inquiry</button>
+<div class="success-message" id="buySellSuccess">Submitted Successfully</div>
+</form>
+</div>
+
+<!-- INSTALLATION -->
+<div id="installation" class="container">
+<h2>Installation Inquiry</h2>
+<form id="installationForm">
+<label>Machine Company</label><input type="text" name="machineCompany" required>
+<label>Machine Model</label><input type="text" name="machineModel" required>
+<label>Mobile</label><input type="tel" name="mobile" required>
+<label>Location</label><input type="text" name="location" required>
+<button class="submit-btn">Submit Inquiry</button>
+<div class="success-message" id="installationSuccess">Submitted Successfully</div>
+</form>
+</div>
+
+<!-- REPAIR -->
+<div id="repair" class="container">
+<h2>Repair Inquiry</h2>
+<form id="repairForm">
+<label>Machine Company</label><input type="text" name="machineCompany" required>
+<label>Machine Model</label><input type="text" name="machineModel" required>
+<label>Mobile</label><input type="tel" name="mobile" required>
+<label>Location</label><input type="text" name="location" required>
+<label>Problem Description</label><textarea name="problemDesc" required></textarea>
+<button class="submit-btn">Submit Inquiry</button>
+<div class="success-message" id="repairSuccess">Submitted Successfully</div>
+</form>
+</div>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+emailjs.init("0FsvUgPY5gL4egD1-");
+
+function openTab(id,btn){
+document.querySelectorAll('.container').forEach(c=>c.style.display='none');
+document.getElementById(id).style.display='block';
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+openTab('buySell',document.querySelector('.tabs button'));
+});
+
+function sendEmail(formId,successId){
+document.getElementById(formId).addEventListener('submit',function(e){
+e.preventDefault();
+const data=Object.fromEntries(new FormData(this));
+
+emailjs.send("service_muzvt7j","template_9yokk0i",data)
+.then(()=>{
+const msg=document.getElementById(successId);
+msg.style.display='block';
+this.reset();
+setTimeout(()=>msg.style.display='none',4000);
+})
+.catch(err=>alert("Error: "+err.text));
+});
+}
+
+sendEmail("buySellForm","buySellSuccess");
+sendEmail("installationForm","installationSuccess");
+sendEmail("repairForm","repairSuccess");
+</script>
+
+</body>
+</html>
